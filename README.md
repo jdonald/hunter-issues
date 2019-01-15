@@ -28,3 +28,12 @@ In file included from ./boost/config.hpp:44:
 The fatal error does not happen when targeting OS X 10.8 / iOS 7 or above, because in
 those cases clang defaults to `-stdlib=libc++`. Failing to pass the other flags
 happens on all targets though.
+
+The problem seems to go away when switching from Xcode to Makefiles. Test case:
+
+    mkdir build-osx-10-7-makefiles; cd build-osx-10-7-makefiles
+    POLLY_DIR="$(cd ../polly && pwd)"
+    cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="${POLLY_DIR}"/osx-10-7-makefiles.cmake ..
+
+And then all the requested flags make their way into `boost.user.jam` and Boost::chrono builds properly.
+Switching to Makefiles does not appear to be an option for iOS + Polly though.

@@ -5,14 +5,14 @@ Usage:
 
     mkdir -p build-osx-10-7; cd build-osx-10-7
     POLLY_DIR="$(cd ../polly && pwd)"
-    XCODE_XCCONFIG_FILE=${POLLY_DIR}"/scripts/NoCodeSign.xcconfig \
+    XCODE_XCCONFIG_FILE="${POLLY_DIR}"/scripts/NoCodeSign.xcconfig \
       cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE="${POLLY_DIR}"/osx-10-7.cmake ..
 
 or
 
     mkdir -p build-ios-6-1; cd build-ios-6-1
     POLLY_DIR="$(cd ../polly && pwd)"
-    XCODE_XCCONFIG_FILE=${POLLY_DIR}"/scripts/NoCodeSign.xcconfig \
+    XCODE_XCCONFIG_FILE="${POLLY_DIR}"/scripts/NoCodeSign.xcconfig \
       cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE="${POLLY_DIR}"/ios-nocodesign-6-1-armv7.cmake ..
 
 Both cases not only fail to propagate -stdlib=libc++, but also flags such
